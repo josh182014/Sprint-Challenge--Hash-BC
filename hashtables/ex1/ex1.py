@@ -12,8 +12,20 @@ def get_indices_of_item_weights(weights, length, limit):
     """
     YOUR CODE HERE
     """
+    if len(weights) <= 1:
+        return None
 
-    return None
+    result = []
+    table = {}
+    for i in weights:
+        difference = limit - i
+        table[i] = difference
+
+    for i, j in enumerate(weights):
+        if limit - j in table:
+            result.insert(0, i)
+
+    return result
 
 
 def print_answer(answer):
