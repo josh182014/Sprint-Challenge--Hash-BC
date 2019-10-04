@@ -12,19 +12,17 @@ def get_indices_of_item_weights(weights, length, limit):
     """
     YOUR CODE HERE
     """
+    result = []
     if len(weights) <= 1:
         return None
-
-    result = []
-    table = {}
+    
     for i in weights:
         difference = limit - i
-        table[i] = difference
+        hash_table_insert(ht, difference, i)
 
-    for i, j in enumerate(weights):
-        if limit - j in table:
-            result.insert(0, i)
-
+    for j, i in enumerate(weights):
+        if hash_table_retrieve(ht, i) == limit - i:
+            result.insert(0, j)
     return result
 
 
